@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -45,9 +46,17 @@ class DetailFragment : Fragment() {
                     labelQuote.text = quote
                     labelParents.text = "$father & $mother"
                     labelSpouse.text = spouse
-                    button.text = house.name
 
-                    button.setOnClickListener {
+                    val overlayColor = House.getOverlayColor(character.house.name)
+                    val baseColor = House.getBaseColor(character.house.name)
+
+                    context?.let { context ->
+                        imgOverlay.background = ContextCompat.getDrawable(context, overlayColor)
+                        btnHouse.backgroundTintList =
+                            ContextCompat.getColorStateList(context, baseColor)
+                    }
+
+                    btnHouse.setOnClickListener {
                         Toast.makeText(context, house.words, Toast.LENGTH_SHORT).show()
                     }
                 }
