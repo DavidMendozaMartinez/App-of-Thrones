@@ -14,6 +14,12 @@ object CharactersRepository {
         }.toMutableList()
     }
 
+    fun findCharacterById(id: String): Character? {
+        return characters.find { character ->
+            character.id == id
+        }
+    }
+
     private fun intToCharacter(int: Int): Character {
         return Character(
             name = "Personaje $int",
