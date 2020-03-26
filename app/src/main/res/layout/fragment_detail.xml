@@ -65,7 +65,10 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="5dp"
-            app:fabSize="normal" />
+            app:fabSize="normal"
+            app:maxImageSize="36dp"
+            tools:backgroundTint="@color/starkBase"
+            tools:src="@drawable/ic_stark" />
 
     </FrameLayout>
 
@@ -88,6 +91,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_born"
+            android:drawableLeft="@drawable/ic_born"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             tools:text="283 AC" />
 
         <TextView
@@ -95,6 +102,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_actor"
+            android:drawableLeft="@drawable/ic_actor"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             tools:text="Kit Harington" />
 
         <TextView
@@ -102,6 +113,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_quote"
+            android:drawableLeft="@drawable/ic_quote"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             android:textStyle="italic"
             tools:text="'I know nothing'" />
 
@@ -110,6 +125,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_parents"
+            android:drawableLeft="@drawable/ic_parents"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             tools:text="Ned Stark" />
 
         <TextView
@@ -117,6 +136,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_spouse"
+            android:drawableLeft="@drawable/ic_spouse"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             tools:text="Sin esposa" />
 
     </LinearLayout>

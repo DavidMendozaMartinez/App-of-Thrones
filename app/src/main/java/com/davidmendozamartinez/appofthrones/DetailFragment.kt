@@ -49,11 +49,13 @@ class DetailFragment : Fragment() {
 
                     val overlayColor = House.getOverlayColor(character.house.name)
                     val baseColor = House.getBaseColor(character.house.name)
+                    val drawable = House.getIcon(character.house.name)
 
                     context?.let { context ->
                         imgOverlay.background = ContextCompat.getDrawable(context, overlayColor)
                         btnHouse.backgroundTintList =
                             ContextCompat.getColorStateList(context, baseColor)
+                        btnHouse.setImageDrawable(ContextCompat.getDrawable(context, drawable))
                     }
 
                     btnHouse.setOnClickListener {
