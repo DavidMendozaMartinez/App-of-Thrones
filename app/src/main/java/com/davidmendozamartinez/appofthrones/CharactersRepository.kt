@@ -1,5 +1,7 @@
 package com.davidmendozamartinez.appofthrones
 
+import java.util.*
+
 object CharactersRepository {
     val characters: MutableList<Character> = mutableListOf()
         get() {
@@ -30,11 +32,24 @@ object CharactersRepository {
             father = "Padre $int",
             mother = "Madre $int",
             spouse = "Espos@ $int",
-            house = House(
-                name = "Casa $int",
-                region = "Región $int",
-                words = "Lema $int"
-            )
+            house = dummyHouse()
         )
+    }
+
+    private fun dummyHouse(): House {
+        val ids = arrayOf(
+            "stark",
+            "lannister",
+            "tyrell",
+            "arryn",
+            "targaryen",
+            "martell",
+            "baratheon",
+            "greyjoy",
+            "frey",
+            "tully"
+        )
+        val randomIdPosition = Random().nextInt(ids.size)
+        return House(name = ids[randomIdPosition], region = "Region", words = "Lema")
     }
 }
