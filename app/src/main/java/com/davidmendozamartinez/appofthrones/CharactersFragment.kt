@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_characters.*
 
 class CharactersFragment : Fragment() {
 
@@ -49,6 +50,10 @@ class CharactersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         list.adapter = adapter
+
+        btnRetry.setOnClickListener {
+            retry()
+        }
     }
 
     override fun onResume() {
@@ -56,14 +61,28 @@ class CharactersFragment : Fragment() {
         requestCharacters()
     }
 
+    private fun retry() {
+        layoutError.visibility = View.INVISIBLE
+        progressBar.visibility = View.VISIBLE
+
+        requestCharacters()
+    }
+
     private fun requestCharacters() {
         context?.let { context ->
             CharactersRepository.requestCharacters(context,
                 { characters ->
-                    adapter.setCharacters(characters)
+                    view?.let {
+                        progressBar.visibility = View.INVISIBLE
+                        list.visibility = View.VISIBLE
+                        adapter.setCharacters(characters)
+                    }
                 },
                 {
-
+                    view?.let {
+                        progressBar.visibility = View.INVISIBLE
+                        layoutError.visibility = View.VISIBLE
+                    }
                 })
         }
     }
