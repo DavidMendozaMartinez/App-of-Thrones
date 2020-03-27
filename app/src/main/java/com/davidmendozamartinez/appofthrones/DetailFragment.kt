@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
@@ -61,7 +60,7 @@ class DetailFragment : Fragment() {
                     }
 
                     btnHouse.setOnClickListener {
-                        Toast.makeText(context, house.words, Toast.LENGTH_SHORT).show()
+                        showDialog(house)
                     }
 
                     Picasso.get()
@@ -73,5 +72,10 @@ class DetailFragment : Fragment() {
                 "Attached activity doesn't use DetailFragment.newInstance() method"
             )
         }
+    }
+
+    private fun showDialog(house: House) {
+        val dialog = HouseDialog.newInstance(house)
+        dialog.show(childFragmentManager, "house_dialog")
     }
 }

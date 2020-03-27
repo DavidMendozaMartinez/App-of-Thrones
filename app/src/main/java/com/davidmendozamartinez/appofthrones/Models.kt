@@ -1,5 +1,6 @@
 package com.davidmendozamartinez.appofthrones
 
+import java.io.Serializable
 import java.util.*
 
 data class Character(
@@ -21,7 +22,7 @@ data class House(
     var region: String,
     var words: String,
     var img: String
-) {
+) : Serializable {
 
     companion object {
 

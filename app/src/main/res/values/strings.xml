@@ -2,4 +2,5 @@
     <string name="app_name">App Of Thrones</string>
     <string name="label_error">Ocurrió un error al solicitar la infomación</string>
     <string name="label_retry">Reintentar</string>
+    <string name="label_accept">Aceptar</string>
 </resources>
