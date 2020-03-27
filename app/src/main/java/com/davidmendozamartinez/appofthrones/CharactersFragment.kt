@@ -48,10 +48,24 @@ class CharactersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val characters: MutableList<Character> = CharactersRepository.characters
-        adapter.setCharacters(characters)
-
         list.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requestCharacters()
+    }
+
+    private fun requestCharacters() {
+        context?.let { context ->
+            CharactersRepository.requestCharacters(context,
+                { characters ->
+                    adapter.setCharacters(characters)
+                },
+                {
+
+                })
+        }
     }
 
     interface OnItemClickListener {
