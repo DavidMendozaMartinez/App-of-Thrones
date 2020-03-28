@@ -6,20 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_characters.*
 
 class CharactersFragment : Fragment() {
 
-    private val list: RecyclerView by lazy {
-        val list: RecyclerView = view!!.findViewById(R.id.list)
-        list.layoutManager = LinearLayoutManager(context)
-        list
-    }
-
     private val adapter: CharactersAdapter by lazy {
-        val adapter = CharactersAdapter { item, _ ->
+        val adapter = CharactersAdapter { item ->
             clickListener.onItemClicked(item)
         }
         adapter

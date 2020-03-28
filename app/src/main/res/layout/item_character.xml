@@ -10,13 +10,13 @@
         android:layout_height="match_parent"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
-        tools:src="@drawable/test" />
+        tools:src="@drawable/placeholder" />
 
     <View
         android:id="@+id/imgOverlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@color/targaryenOverlay" />
+        tools:background="@color/starkOverlay" />
 
     <TextView
         android:id="@+id/labelName"
@@ -27,7 +27,7 @@
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:text="Personaje 1" />
+        tools:text="Jon Snow" />
 
     <TextView
         android:id="@+id/labelTitle"
@@ -35,8 +35,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:gravity="center"
         android:textColor="@android:color/white"
-        tools:text="Caballero" />
+        tools:text="Lord Commander of the Night's Watch" />
 
 </RelativeLayout>

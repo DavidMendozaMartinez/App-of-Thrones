@@ -9,7 +9,6 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-
         intent.getStringExtra("key_id")?.let { id ->
             if (savedInstanceState == null) {
                 val fragment = DetailFragment.newInstance(id)

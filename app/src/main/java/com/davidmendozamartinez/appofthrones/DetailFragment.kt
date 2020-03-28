@@ -14,12 +14,11 @@ class DetailFragment : Fragment() {
 
     companion object {
         fun newInstance(characterId: String): DetailFragment {
+            val arguments = Bundle()
+            arguments.putString("key_id", characterId)
+
             val instance = DetailFragment()
-            val args = Bundle()
-            args.putString("key_id", characterId)
-
-            instance.arguments = args
-
+            instance.arguments = arguments
             return instance
         }
     }
@@ -38,36 +37,35 @@ class DetailFragment : Fragment() {
         arguments?.getString("key_id")?.let { id ->
             val character = CharactersRepository.findCharacterById(id)
 
-            character?.let {
-                with(character) {
-                    labelName.text = name
-                    labelTitle.text = title
-                    labelBorn.text = born
-                    labelActor.text = actor
-                    labelQuote.text = quote
-                    labelParents.text = "$father & $mother"
-                    labelSpouse.text = spouse
+            character?.run {
+                labelName.text = name
+                labelTitle.text = title
+                labelBorn.text = born
+                labelActor.text = actor
+                labelQuote.text = quote
+                labelParents.text = getString(R.string.label_parents, father, mother)
+                labelSpouse.text = spouse
 
-                    val overlayColor = House.getOverlayColor(character.house.name)
-                    val baseColor = House.getBaseColor(character.house.name)
-                    val drawable = House.getIcon(character.house.name)
+                Picasso.get()
+                    .load(img)
+                    .placeholder(R.drawable.placeholder)
+                    .into(imgCharacter)
 
-                    context?.let { context ->
-                        imgOverlay.background = ContextCompat.getDrawable(context, overlayColor)
-                        btnHouse.backgroundTintList =
-                            ContextCompat.getColorStateList(context, baseColor)
-                        btnHouse.setImageDrawable(ContextCompat.getDrawable(context, drawable))
-                    }
+                context?.let { context ->
+                    val overlayColor = House.getOverlayColor(house.name)
+                    val baseColor = House.getBaseColor(house.name)
+                    val drawable = House.getIcon(house.name)
 
-                    btnHouse.setOnClickListener {
-                        showDialog(house)
-                    }
-
-                    Picasso.get()
-                        .load(character.img)
-                        .placeholder(R.drawable.test)
-                        .into(imgCharacter)
+                    imgOverlay.background = ContextCompat.getDrawable(context, overlayColor)
+                    btnHouse.backgroundTintList =
+                        ContextCompat.getColorStateList(context, baseColor)
+                    btnHouse.setImageDrawable(ContextCompat.getDrawable(context, drawable))
                 }
+
+                btnHouse.setOnClickListener {
+                    showDialog(house)
+                }
+
             } ?: throw IllegalAccessException(
                 "Attached activity doesn't use DetailFragment.newInstance() method"
             )

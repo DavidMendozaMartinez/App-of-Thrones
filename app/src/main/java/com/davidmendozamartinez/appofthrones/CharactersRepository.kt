@@ -23,7 +23,7 @@ object CharactersRepository {
                     characters = parseCharacters(response)
                     success.invoke(characters)
                 },
-                { volleyError ->
+                {
                     error.invoke()
                 })
 

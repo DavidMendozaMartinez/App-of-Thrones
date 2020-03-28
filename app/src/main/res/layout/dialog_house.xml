@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
-        tools:src="@drawable/test" />
+        tools:src="@drawable/placeholder" />
 
     <TextView
         android:id="@+id/labelName"
@@ -38,7 +38,7 @@
         android:layout_marginRight="16dp"
         android:gravity="center"
         android:textColor="@android:color/white"
-        tools:text="El norte" />
+        tools:text="The North" />
 
     <TextView
         android:id="@+id/labelWords"
@@ -52,6 +52,6 @@
         android:textColor="@android:color/white"
         android:textSize="22sp"
         android:textStyle="bold|italic"
-        tools:text="Winter is coming!" />
+        tools:text="Winter is Coming" />
 
 </LinearLayout>

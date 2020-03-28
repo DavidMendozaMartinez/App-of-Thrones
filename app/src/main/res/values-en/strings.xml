@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">App Of Thrones</string>
-    <string name="label_error">Request error</string>
+
+    <!--CharactersFragment-->
+    <string name="label_error">An error occurred when requesting the information</string>
     <string name="label_retry">Retry</string>
-    <string name="label_accept">Accept</string>
+
+    <!--DetailFragment-->
+    <string name="label_character">Character</string>
+    <string name="label_parents">%1$s &amp; %2$s</string>
 </resources>

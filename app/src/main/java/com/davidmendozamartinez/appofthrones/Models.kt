@@ -25,7 +25,6 @@ data class House(
 ) : Serializable {
 
     companion object {
-
         private val DEFAULT_PALETTE =
             arrayOf(R.color.starkOverlay, R.color.starkBase, R.drawable.ic_stark)
 

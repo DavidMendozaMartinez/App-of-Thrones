@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            tools:src="@drawable/test" />
+            tools:src="@drawable/placeholder" />
 
         <View
             android:id="@+id/imgOverlay"
@@ -47,7 +47,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:textColor="@android:color/white"
-            tools:text="Lord Comandante de la guardia nocturna" />
+            tools:text="Lord Commander of the Night's Watch" />
 
     </RelativeLayout>
 

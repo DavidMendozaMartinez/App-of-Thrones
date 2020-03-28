@@ -16,36 +16,38 @@ class HouseDialog : DialogFragment() {
             val arguments = Bundle()
             arguments.putSerializable("key_house", house)
 
-            val dialog = HouseDialog()
-            dialog.arguments = arguments
-
-            return dialog
+            val instance = HouseDialog()
+            instance.arguments = arguments
+            return instance
         }
     }
 
     @SuppressLint("InflateParams")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialogView = requireActivity().layoutInflater.inflate(R.layout.dialog_house, null)
-        val house = arguments?.getSerializable("key_house") as House
+        val house = arguments?.getSerializable("key_house") as House?
 
-        context?.let { context ->
-            with(house) {
-                dialogView.labelName.text = name
-                dialogView.labelRegion.text = region
-                dialogView.labelWords.text = words
+        house?.run {
+            dialogView.labelName.text = name
+            dialogView.labelRegion.text = region
+            dialogView.labelWords.text = words
+            Picasso.get()
+                .load(img)
+                .into(dialogView.imgHouse)
+
+            context?.let { context ->
                 dialogView.layoutDialog.background =
                     ContextCompat.getDrawable(context, House.getBaseColor(name))
             }
-        }
 
-        Picasso.get()
-            .load(house.img)
-            .into(dialogView.imgHouse)
+        } ?: throw IllegalAccessException(
+            "Attached activity doesn't use HouseDialog.newInstance() method"
+        )
 
         return activity?.let { activity ->
             AlertDialog.Builder(activity)
                 .setView(dialogView)
-                .setPositiveButton(R.string.label_accept) { _, _ -> dismiss() }
+                .setPositiveButton(android.R.string.ok) { _, _ -> dismiss() }
                 .create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
